@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="charter">
+  <title>Loy Krathong — Grade 8 Bilingual Cultural &amp; Ecological Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Charter foundation) */
+      --background: #f7f4ec;
+      --surface-container-low: #fffdf8;
+      --surface-container: #ece5d4;
+      --surface-container-high: #e3dac4;
+
+      /* Ink */
+      --on-surface: #1c1f26;
+      --on-surface-variant: #4f5360;
+
+      /* Rules */
+      --outline: #b08d57;
+      --outline-variant: #d9cfb8;
+
+      /* Accents */
+      --primary: #14213d;
+      --on-primary: #f7f4ec;
+      --primary-container: #e3e6ee;
+      --on-primary-container: #14213d;
+      --secondary: #2d5a4a;
+      --tertiary: #8a6a35;
+      --error: #9b2c2c;
+      --on-error: #f7f4ec;
+
+      /* Semantic */
+      --positive: #2d5a4a;
+      --positive-bg: #e7f0ec;
+      --warning: #9a5b13;
+      --warning-bg: #f8eedc;
+      --error-bg: #f8e6e6;
+
+      /* Water simulation tokens */
+      --water-clean: #dce8ee;
+      --water-murky: #d6dcc8;
+      --water-polluted: #cbbba8;
+      --water-rim: #4b6e82;
+      --leaf-green: #3a6b4c;
+      --leaf-light: #6b996f;
+      --stalk-tan: #d8c89e;
+      --flame-amber: #d98218;
+      --marigold: #d99b1e;
+      --foam-white: #f2f4f7;
+      --bread-warm: #c9985a;
+      --ice-tint: #cfe7f2;
+
+      /* Data series */
+      --data-1: #14213d;
+      --data-2: #8a6a35;
+      --data-3: #2d5a4a;
+      --data-4: #9b2c2c;
+      --data-context: #c2bba9;
+
+      /* Focus ring */
+      --focus: #14213d;
+
+      /* Typography: Times New Roman requested by user, with Thai serif fallback */
+      --font-headline: 'Times New Roman', Times, 'Noto Serif Thai', serif;
+      --font-body: 'Times New Roman', Times, 'Noto Serif Thai', serif;
+      --font-label: 'IBM Plex Mono', 'Noto Serif Thai', monospace;
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.35rem, 1.4rem + 3.4vw, 3.85rem);
+      --headline-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.35rem);
+      --subhead-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+      --body-size: clamp(1.0625rem, 1rem + 0.2vw, 1.15rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Shape (Charter squared precision) */
+      --rounded: 0.125rem;
+      --rounded-lg: 0.125rem;
+      --rounded-full: 0.125rem;
+
+      /* Style effects */
+      --brass-rule: 2px solid var(--outline);
+      --hairline: 1px solid var(--outline-variant);
+      --leaf-underline: 0 1px 0 var(--outline-variant);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header { position: static !important; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .th {
+      font-family: 'Noto Serif Thai', 'Times New Roman', Times, serif;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      line-height: 1.55;
+    }
+
+    /* Title Band (Charter Treatment 1 & 2) */
+    .title-band {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+      border-bottom: 3px solid var(--outline);
+    }
+    .title-band-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .title-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--outline) 78%, var(--on-primary));
+      margin: 0 0 var(--space-sm);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .title-band h1 {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: var(--display-size);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin: 0 0 var(--space-sm);
+      color: var(--on-primary);
+      max-width: 24ch;
+    }
+    .title-thai {
+      font-size: var(--subhead-size);
+      color: color-mix(in srgb, var(--outline) 78%, var(--on-primary));
+      margin: 0 0 var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid color-mix(in srgb, var(--outline) 55%, var(--primary));
+    }
+    .title-band .lede {
+      font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+      color: color-mix(in srgb, var(--on-primary) 86%, var(--primary));
+      max-width: 66ch;
+      margin: 0;
+      line-height: 1.58;
+    }
+
+    /* Section Index Navigation Bar */
+    .nav-strip {
+      background: var(--surface-container-low);
+      border-bottom: var(--hairline);
+      padding: var(--space-sm) var(--space-lg);
+    }
+    .nav-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      text-decoration: none;
+      color: var(--on-surface);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .nav-link:hover {
+      background-color: var(--primary-container);
+      border-bottom-color: var(--outline);
+    }
+    .nav-link .nav-num {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--tertiary);
+    }
+    .progress-summary {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+    }
+
+    /* Main Page Grid */
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-2xl);
+      padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Key Figure Cards (Charter Treatment 3 & 4) */
+    .figures-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .figure-card {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .figure-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .figure-value {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+      font-variant-numeric: tabular-nums lining-nums;
+      color: var(--on-surface);
+      line-height: 1.15;
+    }
+    .figure-delta {
+      color: var(--tertiary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-top: var(--space-xs);
+    }
+    .figure-delta.positive { color: var(--positive); }
+    .figure-delta.warning { color: var(--warning); }
+    .figure-delta.negative { color: var(--error); }
+
+    /* Section Headers (Charter Treatment 5) */
+    .study-section {
+      display: grid;
+      gap: var(--space-lg);
+      scroll-margin-top: var(--space-lg);
+    }
+    .section-head {
+      border-top: var(--brass-rule);
+      padding-top: var(--space-md);
+      border-bottom: var(--hairline);
+      padding-bottom: var(--space-sm);
+    }
+    .section-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--tertiary);
+      margin-bottom: var(--space-xs);
+    }
+    .section-head h2 {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: var(--headline-size);
+      line-height: 1.15;
+      margin: 0 0 var(--space-xs);
+      color: var(--on-surface);
+    }
+    .section-thai {
+      font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+      color: var(--primary);
+      margin: 0;
+      font-weight: 600;
+    }
+    .section-lede {
+      margin: var(--space-sm) 0 0;
+      max-width: 65ch;
+      color: var(--on-surface-variant);
+    }
+
+    /* Asymmetric Narrative Split */
+    .split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .prose-col p {
+      margin: 0 0 var(--space-md);
+      max-width: 65ch;
+    }
+    .prose-col h3, .card-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      margin: 0 0 var(--space-sm);
+      color: var(--primary);
+      line-height: 1.25;
+    }
+
+    /* Schedule / Callout Panel */
+    .schedule-panel {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+    }
+    .schedule-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+    }
+    .schedule-list li {
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--hairline);
+    }
+    .schedule-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .tag-stamp {
+      display: inline-block;
+      border: 1px solid var(--outline);
+      color: var(--tertiary);
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--rounded);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Tabs / Filter Buttons */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      border-bottom: var(--hairline);
+      padding-bottom: var(--space-sm);
+    }
+    .tab-btn {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background: transparent;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--on-surface);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .tab-btn:hover {
+      background: var(--primary-container);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .tab-panel {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+    }
+    .tab-panel[hidden] { display: none; }
+
+    /* Buttons */
+    .btn-primary {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--primary);
+      color: var(--on-primary);
+      border: 1px solid var(--primary);
+      border-radius: var(--rounded);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .btn-primary:hover {
+      background: color-mix(in srgb, var(--primary) 86%, var(--on-surface));
+    }
+    .btn-secondary {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: var(--rounded);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .btn-secondary:hover {
+      background: var(--primary-container);
+    }
+    .btn-secondary.active {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+
+    /* Adaptive Card Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+    .belief-card {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .belief-index {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--tertiary);
+      letter-spacing: 0.06em;
+    }
+
+    /* Interactive Krathong Anatomy */
+    .anatomy-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .anatomy-stage {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+    }
+    .anatomy-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .anatomy-part {
+      cursor: pointer;
+      transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+    }
+    .anatomy-part:hover { opacity: 0.88; }
+    .anatomy-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .part-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      text-align: left;
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .part-btn:hover { background: var(--primary-container); }
+    .part-btn.active {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .part-btn .part-thai {
+      font-size: 0.8rem;
+      font-weight: 400;
+      opacity: 0.88;
+    }
+
+    /* Comparative Table */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+    }
+    table.charter-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.96rem;
+    }
+    table.charter-table thead th {
+      background: var(--surface-container-high);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+      padding: var(--space-md);
+      border-bottom: var(--brass-rule);
+    }
+    table.charter-table tbody td {
+      padding: var(--space-md);
+      border-bottom: var(--hairline);
+      vertical-align: top;
+    }
+    table.charter-table tbody tr:hover {
+      background: var(--surface-container);
+    }
+    table.charter-table .num-col {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* Material Simulator & Chart */
+    .sim-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .sim-controls {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .field-group {
+      display: grid;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+    .charter-select, .charter-textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+    }
+    .charter-select {
+      padding-right: 2.5rem;
+    }
+    .charter-select:focus, .charter-textarea:focus {
+      border-color: var(--primary);
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .preset-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .preset-btn:hover { background: var(--surface-container-high); }
+
+    .sim-stage {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .sim-tank {
+      width: 100%;
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      overflow: hidden;
+      background: var(--background);
+    }
+    .sim-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .sim-metric-box {
+      background: var(--background);
+      border-top: var(--brass-rule);
+      padding: var(--space-sm) var(--space-md);
+    }
+    .sim-verdict {
+      padding: var(--space-md);
+      border-left: 3px solid var(--primary);
+      background: var(--surface-container);
+    }
+    .sim-verdict.status-good { border-left-color: var(--positive); background: var(--positive-bg); }
+    .sim-verdict.status-warn { border-left-color: var(--warning); background: var(--warning-bg); }
+    .sim-verdict.status-bad { border-left-color: var(--error); background: var(--error-bg); }
+
+    .chart-panel {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .chart-box {
+      position: relative;
+      min-height: 340px;
+      width: 100%;
+    }
+    .source-note {
+      font-size: 0.88rem;
+      color: var(--on-surface-variant);
+      border-top: var(--hairline);
+      padding-top: var(--space-sm);
+      margin: 0;
+    }
+
+    /* Bilingual Flashcards */
+    .flashcard-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .flashcard {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      border-radius: var(--rounded);
+      min-height: 240px;
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      cursor: pointer;
+      position: relative;
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+    .flashcard:hover {
+      background: var(--background);
+    }
+    .flashcard.flipped {
+      background: var(--surface-container);
+      border-top-color: var(--primary);
+    }
+    .flashcard.mastered {
+      border-top: 3px solid var(--positive);
+    }
+    .fc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .fc-cat {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--tertiary);
+    }
+    .fc-thai {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: var(--space-xs) 0 0;
+    }
+    .fc-phonetic {
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+    }
+    .fc-english {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .fc-def {
+      font-size: 0.95rem;
+      margin: var(--space-xs) 0 0;
+      color: var(--on-surface);
+    }
+    .fc-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      border-top: var(--hairline);
+      padding-top: var(--space-sm);
+    }
+    .fc-master-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      background: transparent;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .fc-master-btn.is-mastered {
+      background: var(--positive);
+      color: var(--on-primary);
+      border-color: var(--positive);
+    }
+
+    /* Workshop & Debate Prompts */
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .prompt-card {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .stance-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .status-msg {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--positive);
+      min-height: 1.4em;
+    }
+
+    /* Self-Grading Quiz */
+    .quiz-header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .quiz-list {
+      display: grid;
+      gap: var(--space-md);
+    }
+    .quiz-card {
+      background: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .quiz-q-title {
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin: 0;
+    }
+    .quiz-options {
+      display: grid;
+      gap: var(--space-xs);
+      margin-top: var(--space-xs);
+    }
+    .quiz-opt-btn {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+      background: var(--background);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .quiz-opt-btn:hover:not(:disabled) {
+      background: var(--primary-container);
+    }
+    .quiz-opt-btn.selected-correct {
+      background: var(--positive-bg);
+      border-color: var(--positive);
+      color: var(--positive);
+      font-weight: 700;
+    }
+    .quiz-opt-btn.selected-wrong {
+      background: var(--error-bg);
+      border-color: var(--error);
+      color: var(--error);
+      font-weight: 700;
+    }
+    .quiz-opt-btn.reveal-correct {
+      border-color: var(--positive);
+      background: var(--positive-bg);
+    }
+    .quiz-feedback {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container);
+      border-left: 3px solid var(--primary);
+      font-size: 0.96rem;
+    }
+    .quiz-feedback.correct { border-left-color: var(--positive); }
+    .quiz-feedback.wrong { border-left-color: var(--error); }
+
+    /* Footer */
+    .study-footer {
+      border-top: var(--brass-rule);
+      padding: var(--space-xl) var(--space-lg);
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      font-size: 0.92rem;
+    }
+    .study-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 860px) {
+      .split-grid,
+      .anatomy-layout,
+      .sim-layout,
+      .workshop-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-xl);
+      }
+      .title-band {
+        padding: var(--space-xl) var(--space-md) var(--space-lg);
+      }
+      .sim-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="title-band">
+    <div class="title-band-inner">
+      <p class="title-kicker">
+        <span>Grade 8 Bilingual Social Studies &amp; Cultural Heritage</span>
+        <span>·</span>
+        <span class="th">ระดับชั้นมัธยมศึกษาปีที่ ๒ · ขึ้น ๑๕ ค่ำ เดือน ๑๒</span>
+      </p>
+      <h1>Loy Krathong: Sacred Waters, Living Craft, and Ecological Stewardship</h1>
+      <p class="title-thai th">ประเพณีลอยกระทง: รากเหง้าทางประวัติศาสตร์ คติความเชื่อ งานประณีตศิลป์ และความรับผิดชอบต่อสิ่งแวดล้อม</p>
+      <p class="lede">
+        Every full moon of the twelfth Thai lunar month, waterways across Thailand and mainland Southeast Asia fill with candlelight. This interactive dossier traces how a harvest and Brahmanical lamp rite became a Buddhist water-reverence tradition—and asks how modern communities can honor Phra Mae Khongkha without polluting the rivers she embodies.
+      </p>
+    </div>
+  </header>
+
+  <nav class="nav-strip" aria-label="Study sections navigation">
+    <div class="nav-strip-inner">
+      <div class="nav-links">
+        <a class="nav-link" href="#sec-history"><span class="nav-num">01</span> History</a>
+        <a class="nav-link" href="#sec-symbolism"><span class="nav-num">02</span> Symbolism</a>
+        <a class="nav-link" href="#sec-anatomy"><span class="nav-num">03</span> Craft Anatomy</a>
+        <a class="nav-link" href="#sec-regional"><span class="nav-num">04</span> Regional &amp; SEA</a>
+        <a class="nav-link" href="#sec-simulator"><span class="nav-num">05</span> Material Lab</a>
+        <a class="nav-link" href="#sec-flashcards"><span class="nav-num">06</span> Flashcards</a>
+        <a class="nav-link" href="#sec-stewardship"><span class="nav-num">07</span> Stewardship</a>
+        <a class="nav-link" href="#sec-quiz"><span class="nav-num">08</span> Quiz</a>
+      </div>
+      <div class="progress-summary" id="global-progress">
+        <span id="prog-flashcards">Flashcards: 0/12</span>
+        <span>·</span>
+        <span id="prog-quiz">Quiz: 0/8</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-grid">
+    <!-- Headline Figures Strip -->
+    <section class="figures-row" aria-label="Core curriculum overview figures">
+      <article class="figure-card">
+        <div class="figure-label">Lunar Calendar Timing</div>
+        <div class="figure-value">12th Full Moon</div>
+        <div class="figure-delta th">ขึ้น ๑๕ ค่ำ เดือน ๑๒ (พฤศจิกายน)</div>
+      </article>
+      <article class="figure-card">
+        <div class="figure-label">Documented Royal Lineage</div>
+        <div class="figure-value">700+ Years</div>
+        <div class="figure-delta">Sukhothai legend to Rattanakosin rites</div>
+      </article>
+      <article class="figure-card">
+        <div class="figure-label">Regional Water-Light Kin</div>
+        <div class="figure-value">4 Nations</div>
+        <div class="figure-delta">Thailand, Myanmar, Cambodia, Laos</div>
+      </article>
+      <article class="figure-card">
+        <div class="figure-label">Decomposition Contrast</div>
+        <div class="figure-value">14d vs. 450+ yr</div>
+        <div class="figure-delta positive">Banana trunk vs. synthetic styrofoam</div>
+      </article>
+    </section>
+
+    <!-- SECTION I: HISTORICAL ORIGINS -->
+    <section class="study-section" id="sec-history">
+      <div class="section-head">
+        <div class="section-kicker">Section I · Historical Continuity &amp; Evidence</div>
+        <h2>From Ancient Harvest Lamps to Royal Buddhist Ceremony</h2>
+        <p class="section-thai th">๑. รากเหง้าทางประวัติศาสตร์: จากพิธีพราหมณ์สู่ราชประเพณีและคติพุทธ</p>
+        <p class="section-lede">Loy Krathong did not appear fully formed in a single century; it reflects centuries of cultural synthesis across South and Southeast Asia.</p>
+      </div>
+
+      <div class="split-grid">
+        <div class="prose-col">
+          <h3>Three Historical Layers of Development</h3>
+          <p>
+            <strong>1. Brahmanical &amp; Monsoon-Harvest Roots:</strong> Long before the modern Thai nation-state, agrarian communities across mainland Southeast Asia marked the end of the rainy season by thanking water spirits when floodwaters receded and rice ripened. This indigenous gratitude merged with ancient Indian Brahmanical rituals—specifically <em>Dipavali</em> and the <em>Chong Priang</em> (<span class="th">พิธีจองเปรียง</span>) lamp-hoisting ceremony—in which oil lanterns honored Brahma, Vishnu, and Shiva.
+          </p>
+          <p>
+            <strong>2. Theravada Buddhist Adaptation:</strong> As Buddhism became the dominant spiritual framework in the Chao Phraya basin, floating lamps were reinterpreted as <em>Phuttha Bucha</em> (<span class="th">พุทธบูชา</span>). Devotees directed their offerings toward the Buddha's sacred footprint (<em>Roi Phra Phutthabat</em> / <span class="th">รอยพระพุทธบาท</span>) imprinted on the sandy banks of the Nammada River, as well as the celestial <em>Chulamani Chedi</em> (<span class="th">พระจุฬามณีเจดีย์</span>) housing the Buddha's hair relic.
+          </p>
+          <p>
+            <strong>3. Royal Patronage &amp; Historiography:</strong> While popular school folklore credits Sukhothai's Lady Nang Nopphamat with inventing the lotus-shaped krathong, modern Thai historians emphasize critical reading of primary texts—comparing royal chronicles from King Rama III and King Mongkut (Rama IV) to separate romantic legend from verifiable evidence.
+          </p>
+        </div>
+
+        <aside class="schedule-panel" aria-label="Historical chronology schedule">
+          <div class="section-kicker">Chronological Evidence Schedule</div>
+          <ul class="schedule-list">
+            <li>
+              <span class="tag-stamp">Pre-13th Century</span>
+              <div><strong>Indigenous &amp; Brahmanical Synthesis:</strong> River-thanksgiving rites meet South Asian <em>Chong Priang</em> lantern rituals.</div>
+            </li>
+            <li>
+              <span class="tag-stamp">13th–14th Century · Sukhothai</span>
+              <div><strong>Stone Inscription No. 1 &amp; Royal Lamps:</strong> King Ramkhamhaeng's inscription mentions <em>Phao Thian Len Fai</em> (candle-lighting festivals), though not explicitly the word <em>krathong</em>.</div>
+            </li>
+            <li>
+              <span class="tag-stamp">Early 19th Century · Rama III</span>
+              <div><strong>Tamrab Tao Si Chulalak:</strong> Literary prose introduces the Nang Nopphamat narrative alongside early Rattanakosin court customs.</div>
+            </li>
+            <li>
+              <span class="tag-stamp">Mid-19th Century · Rama IV</span>
+              <div><strong>Phra Ratchaphithi Sip Song Duean:</strong> King Mongkut records the shift from Brahmanical lantern rites to Buddhist <em>Loi Phra Prathip</em> (<span class="th">ลอยพระประทีป</span>).</div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <!-- Interactive Historiography Tabs -->
+      <div>
+        <div class="tab-bar" role="tablist" aria-label="Historical interpretation tabs">
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" id="hist-tab-legend" onclick="switchHistoryTab('legend')">
+            Folklore: Nang Nopphamat (<span class="th">ตำนานนางนพมาศ</span>)
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" id="hist-tab-consensus" onclick="switchHistoryTab('consensus')">
+            Historical Consensus (<span class="th">หลักฐานทางประวัติศาสตร์</span>)
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" id="hist-tab-royal" onclick="switchHistoryTab('royal')">
+            Royal Traditions (<span class="th">พระราชพิธีลอยพระประทีป</span>)
+          </button>
+        </div>
+
+        <div class="tab-panel" id="hist-panel-legend" role="tabpanel">
+          <h3 class="card-title">The Legend of Nang Nopphamat (Tao Si Chulalak)</h3>
+          <p>
+            According to the literary classic <em>Tamrab Tao Si Chulalak</em> (<span class="th">ตำรับท้าวศรีจุฬาลักษณ์</span>), Nang Nopphamat was the learned daughter of a Brahmin court official who served as a royal consort to King Phra Ruang (often identified with King Lithai) in the Sukhothai Kingdom. During the annual <em>Chong Priang</em> festival, she fashioned a delicate lotus-shaped vessel (<em>Krathong Dok Bua</em>) out of folded banana leaves, decorated it with flowers, incense, and a carved fruit lantern, and floated it so the King could pay homage to the Buddha's footprint on the river. Pleased by her ingenuity, the King decreed that future generations should imitate her lotus krathong every twelfth lunar full moon.
+          </p>
+        </div>
+
+        <div class="tab-panel" id="hist-panel-consensus" role="tabpanel" hidden>
+          <h3 class="card-title">Critical Historiography: Why Scholars Date the Text to Rattanakosin</h3>
+          <p>
+            Grade 8 historians examine texts for <em>anachronisms</em>—clues showing when a document was actually written. Scholars including Prince Damrong Rajanubhab and modern historians note that <em>Tamrab Tao Si Chulalak</em> mentions Europeans (<em>Farang</em>), cannons, American-origin crops, and Bangkok-era royal vocabulary that did not exist in 14th-century Sukhothai. Furthermore, King Rama IV (King Mongkut) wrote in 1863 that Loy Krathong originated as a Brahmanical ceremony adopted into Thai Buddhist royal practice rather than an invention of a Sukhothai consort. Thus, while the legend captures Sukhothai's cultural ideal, the written story itself dates from the reign of King Rama III (1824–1851).
+          </p>
+        </div>
+
+        <div class="tab-panel" id="hist-panel-royal" role="tabpanel" hidden>
+          <h3 class="card-title">From Chong Priang to Loi Phra Prathip</h3>
+          <p>
+            In the Ayutthaya and early Bangkok periods, the court observed <em>Chong Priang</em> (<span class="th">จองเปรียง</span>) by hoisting ceremonial oil lanterns on tall bamboo poles before later shifting emphasis to the river ceremony of <em>Loi Phra Prathip</em> (<span class="th">ลอยพระประทีป</span>). During King Rama IV's reign, the monarch explicitly redirected the rite into a Buddhist offering honoring the Buddha's footprint, launching ornate royal vessels along the Chao Phraya River. Over the twentieth century, municipal river festivals transformed this royal court custom into one of Thailand's most widely shared civic celebrations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION II: SYMBOLIC & SPIRITUAL MEANING -->
+    <section class="study-section" id="sec-symbolism">
+      <div class="section-head">
+        <div class="section-kicker">Section II · Spiritual Philosophy &amp; Worldview</div>
+        <h2>Honoring Phra Mae Khongkha and Floating Away Misfortune</h2>
+        <p class="section-thai th">๒. คติความเชื่อและความหมายเชิงสัญลักษณ์: การขอขมาพระแม่คงคาและการสะเดาะเคราะห์</p>
+        <p class="section-lede">Beneath the festive lights lies a four-part ethical relationship between human society, spiritual renewal, and water.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="belief-card">
+          <div class="belief-index">01 · GRATITUDE &amp; APOLOGY</div>
+          <h3 class="card-title">Phra Mae Khongkha (<span class="th">ขอขมาพระแม่คงคา</span>)</h3>
+          <p>
+            <em>Phra Mae Khongkha</em>—derived from the Sanskrit goddess <em>Ganga</em>—personifies all life-giving rivers and canals. Families whisper prayers of gratitude for clean drinking water, irrigation, and transport, while asking formal forgiveness (<em>Kho Khama</em>) for every time humans soiled or wasted water throughout the year.
+          </p>
+        </article>
+
+        <article class="belief-card">
+          <div class="belief-index">02 · MORAL RENEWAL</div>
+          <h3 class="card-title">Releasing Misfortune (<span class="th">ลอยทุกข์ ลอยโศก</span>)</h3>
+          <p>
+            Watching the krathong drift downstream symbolizes letting go of anger, negative karma, illness, and misfortune (<em>Khror</em> / <span class="th">เคราะห์</span>). In traditional folk practice, some people place a tiny fingernail clipping or strand of hair inside the krathong to represent shedding past burdens and beginning anew.
+          </p>
+        </article>
+
+        <article class="belief-card">
+          <div class="belief-index">03 · BUDDHIST MERIT</div>
+          <h3 class="card-title">Light as Wisdom (<span class="th">บูชาด้วยประทีป</span>)</h3>
+          <p>
+            Lighting the central candle and three joss sticks represents <em>Phuttha Bucha</em>—offering light to dispel spiritual ignorance and honor the Buddha's footprint on the Nammada River, as well as the Triple Gem (Buddha, Dhamma, and Sangha).
+          </p>
+        </article>
+
+        <article class="belief-card">
+          <div class="belief-index">04 · SOCIAL COHESION</div>
+          <h3 class="card-title">Harvest Gratitude &amp; Community (<span class="th">ความสามัคคี</span>)</h3>
+          <p>
+            Taking place at the close of the rainy season when waterways run full, Loy Krathong gathers multi-generational households at local temples and river piers, reinforcing shared stewardship over the waterways that sustain Thai agriculture and daily life.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION III: CULTURAL ANATOMY & CRAFT -->
+    <section class="study-section" id="sec-anatomy">
+      <div class="section-head">
+        <div class="section-kicker">Section III · Traditional Craft &amp; Structural Anatomy</div>
+        <h2>Anatomy of a Traditional Banana-Leaf Krathong</h2>
+        <p class="section-thai th">๓. องค์ประกอบและงานประณีตศิลป์ของกระทงใบตองแบบดั้งเดิม</p>
+        <p class="section-lede">Select any component on the illustration or control grid below to inspect its craft material, folding technique, and symbolic purpose.</p>
+      </div>
+
+      <div class="anatomy-layout">
+        <div class="anatomy-stage">
+          <svg class="anatomy-svg" viewBox="0 0 460 330" role="img" aria-label="Interactive cross-section diagram of a traditional Krathong">
+            <!-- Water surface backdrop -->
+            <rect x="0" y="245" width="460" height="85" fill="var(--water-clean)" />
+            <line x1="20" y1="248" x2="440" y2="248" stroke="var(--water-rim)" stroke-width="2" />
+            <path d="M45 270 Q110 264 175 270 T305 270 T415 270" fill="none" stroke="var(--water-rim)" stroke-width="1.2" opacity="0.5" />
+            <path d="M80 292 Q150 286 220 292 T360 292" fill="none" stroke="var(--water-rim)" stroke-width="1.2" opacity="0.35" />
+
+            <!-- 1. Banana Trunk Base -->
+            <g class="anatomy-part" id="svg-part-base" onclick="selectAnatomy('base')" tabindex="0" role="button" aria-label="Banana trunk base">
+              <ellipse cx="230" cy="242" rx="115" ry="20" fill="var(--stalk-tan)" stroke="var(--primary)" stroke-width="2" />
+              <rect x="115" y="212" width="230" height="30" fill="var(--stalk-tan)" stroke="var(--primary)" stroke-width="2" />
+              <ellipse cx="230" cy="212" rx="115" ry="18" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="2" />
+              <ellipse cx="230" cy="212" rx="90" ry="12" fill="none" stroke="var(--outline)" stroke-width="1" stroke-dasharray="4 3" />
+            </g>
+
+            <!-- 2. Folded Banana Leaf Petals -->
+            <g class="anatomy-part" id="svg-part-leaves" onclick="selectAnatomy('leaves')" tabindex="0" role="button" aria-label="Folded banana leaf petals">
+              <polygon points="105,222 128,158 152,222" fill="var(--leaf-green)" stroke="var(--primary)" stroke-width="1.5" />
+              <polygon points="140,226 168,150 194,226" fill="var(--leaf-light)" stroke="var(--primary)" stroke-width="1.5" />
+              <polygon points="182,228 212,148 238,228" fill="var(--leaf-green)" stroke="var(--primary)" stroke-width="1.5" />
+              <polygon points="222,228 250,148 278,228" fill="var(--leaf-light)" stroke="var(--primary)" stroke-width="1.5" />
+              <polygon points="266,226 294,150 322,226" fill="var(--leaf-green)" stroke="var(--primary)" stroke-width="1.5" />
+              <polygon points="308,222 334,158 356,222" fill="var(--leaf-light)" stroke="var(--primary)" stroke-width="1.5" />
+              <!-- Green horizontal leaf wrap -->
+              <rect x="115" y="218" width="230" height="16" fill="var(--leaf-green)" stroke="var(--primary)" stroke-width="1.5" />
+            </g>
+
+            <!-- 5. Flowers -->
+            <g class="anatomy-part" id="svg-part-flowers" onclick="selectAnatomy('flowers')" tabindex="0" role="button" aria-label="Marigold and globe amaranth flowers">
+              <circle cx="165" cy="195" r="14" fill="var(--marigold)" stroke="var(--primary)" stroke-width="1.5" />
+              <circle cx="165" cy="195" r="5" fill="var(--tertiary)" />
+              <circle cx="295" cy="195" r="14" fill="var(--marigold)" stroke="var(--primary)" stroke-width="1.5" />
+              <circle cx="295" cy="195" r="5" fill="var(--tertiary)" />
+              <circle cx="202" cy="186" r="11" fill="var(--error)" stroke="var(--primary)" stroke-width="1.5" />
+              <circle cx="258" cy="186" r="11" fill="var(--error)" stroke="var(--primary)" stroke-width="1.5" />
+              <circle cx="230" cy="194" r="12" fill="var(--marigold)" stroke="var(--primary)" stroke-width="1.5" />
+            </g>
+
+            <!-- 6. Coins -->
+            <g class="anatomy-part" id="svg-part-coins" onclick="selectAnatomy('coins')" tabindex="0" role="button" aria-label="Coins placed inside krathong">
+              <ellipse cx="192" cy="208" rx="10" ry="5" fill="var(--outline)" stroke="var(--primary)" stroke-width="1.5" />
+              <ellipse cx="268" cy="208" rx="10" ry="5" fill="var(--outline)" stroke="var(--primary)" stroke-width="1.5" />
+            </g>
+
+            <!-- 4. Three Incense Sticks -->
+            <g class="anatomy-part" id="svg-part-incense" onclick="selectAnatomy('incense')" tabindex="0" role="button" aria-label="Three incense joss sticks">
+              <line x1="212" y1="185" x2="196" y2="75" stroke="var(--tertiary)" stroke-width="3" />
+              <line x1="230" y1="185" x2="230" y2="66" stroke="var(--tertiary)" stroke-width="3" />
+              <line x1="248" y1="185" x2="264" y2="75" stroke="var(--tertiary)" stroke-width="3" />
+              <circle cx="196" cy="73" r="3" fill="var(--error)" />
+              <circle cx="230" cy="64" r="3" fill="var(--error)" />
+              <circle cx="264" cy="73" r="3" fill="var(--error)" />
+            </g>
+
+            <!-- 3. Central Candle -->
+            <g class="anatomy-part" id="svg-part-candle" onclick="selectAnatomy('candle')" tabindex="0" role="button" aria-label="Central beeswax candle">
+              <rect x="223" y="118" width="14" height="68" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="1.8" />
+              <line x1="230" y1="118" x2="230" y2="108" stroke="var(--on-surface)" stroke-width="2" />
+              <path d="M230 82 Q239 98 230 110 Q221 98 230 82 Z" fill="var(--flame-amber)" stroke="var(--tertiary)" stroke-width="1.2" />
+            </g>
+
+            <!-- Callout Leader Labels -->
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--primary)">
+              <line x1="230" y1="95" x2="342" y2="95" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="348" y="99">3. CANDLE</text>
+
+              <line x1="196" y1="73" x2="112" y2="73" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="20" y="77">4. 3 INCENSE</text>
+
+              <line x1="295" y1="195" x2="360" y2="168" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="364" y="172">5. FLOWERS</text>
+
+              <line x1="128" y1="185" x2="72" y2="155" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="16" y="159">2. LEAVES</text>
+
+              <line x1="345" y1="232" x2="375" y2="232" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="378" y="236">1. BASE</text>
+
+              <line x1="192" y1="208" x2="96" y2="236" stroke="var(--primary)" stroke-width="1" stroke-dasharray="3 2" />
+              <text x="20" y="240">6. COINS</text>
+            </g>
+          </svg>
+        </div>
+
+        <div>
+          <div class="anatomy-buttons" role="group" aria-label="Krathong structural components">
+            <button type="button" class="part-btn active" id="btn-part-base" onclick="selectAnatomy('base')">
+              <span>1. Banana Trunk Base</span>
+              <span class="part-thai th">หยวกกล้วย</span>
+            </button>
+            <button type="button" class="part-btn" id="btn-part-leaves" onclick="selectAnatomy('leaves')">
+              <span>2. Folded Banana Leaves</span>
+              <span class="part-thai th">ใบตองพับกลีบ</span>
+            </button>
+            <button type="button" class="part-btn" id="btn-part-candle" onclick="selectAnatomy('candle')">
+              <span>3. Candle</span>
+              <span class="part-thai th">เทียน</span>
+            </button>
+            <button type="button" class="part-btn" id="btn-part-incense" onclick="selectAnatomy('incense')">
+              <span>4. Three Joss Sticks</span>
+              <span class="part-thai th">ธูป ๓ ดอก</span>
+            </button>
+            <button type="button" class="part-btn" id="btn-part-flowers" onclick="selectAnatomy('flowers')">
+              <span>5. Symbolic Flowers</span>
+              <span class="part-thai th">ดอกไม้บูชา</span>
+            </button>
+            <button type="button" class="part-btn" id="btn-part-coins" onclick="selectAnatomy('coins')">
+              <span>6. Coins</span>
+              <span class="part-thai th">เหรียญกษาปณ์</span>
+            </button>
+          </div>
+
+          <article class="schedule-panel" id="anatomy-detail-card" aria-live="polite">
+            <span class="tag-stamp" id="anat-tag">Structural Buoyancy · 100% Organic</span>
+            <h3 class="card-title" id="anat-title">1. Banana Trunk Base (<span class="th">หยวกกล้วย</span>)</h3>
+            <p id="anat-desc">
+              Cut horizontally into a 5–7 cm disc from the fibrous core of a harvested banana pseudostem, the trunk contains microscopic air pockets that naturally keep the vessel buoyant without synthetic foam.
+            </p>
+            <p><strong>Symbolic &amp; Craft Note:</strong> <span id="anat-symbol">Represents grounded humility and circular wholeness; after harvesting fruit, banana trunks are reused rather than discarded, demonstrating zero-waste Thai folk craft.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION IV: COMPARATIVE REGIONAL & SOUTHEAST ASIAN CELEBRATIONS -->
+    <section class="study-section" id="sec-regional">
+      <div class="section-head">
+        <div class="section-kicker">Section IV · Comparative Cultural Geography</div>
+        <h2>Thai Regional Styles &amp; Mainland Southeast Asian Water Festivals</h2>
+        <p class="section-thai th">๔. การเปรียบเทียบประเพณีลอยกระทงในภูมิภาคต่าง ๆ ของไทยและอาเซียน</p>
+        <p class="section-lede">Across river basins from Chiang Mai to Phnom Penh, shared monsoon hydrology gave rise to distinct regional expressions of light and water reverence.</p>
+      </div>
+
+      <div class="tab-bar" role="group" aria-label="Filter regional traditions table">
+        <button type="button" class="btn-secondary active" id="reg-filter-all" onclick="filterRegional('all')">All Traditions (7)</button>
+        <button type="button" class="btn-secondary" id="reg-filter-thai" onclick="filterRegional('thai')">Regions of Thailand (4)</button>
+        <button type="button" class="btn-secondary" id="reg-filter-asean" onclick="filterRegional('asean')">ASEAN Neighbors (3)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="charter-table" id="regional-table">
+          <thead>
+            <tr>
+              <th>Region / Nation</th>
+              <th>Festival Name</th>
+              <th>Primary Vessel / Medium</th>
+              <th>Distinctive Ritual &amp; Ecological Note</th>
+            </tr>
+          </thead>
+          <tbody id="regional-tbody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION V: INTERACTIVE KRATHONG SIMULATOR & DECOMPOSITION CHART -->
+    <section class="study-section" id="sec-simulator">
+      <div class="section-head">
+        <div class="section-kicker">Section V · Environmental Science &amp; Material Lab</div>
+        <h2>Krathong Material Simulator &amp; Decomposition Analytics</h2>
+        <p class="section-thai th">๕. ห้องทดลองจำลองวัสดุกระทง: การลอยตัว อัตราการย่อยสลาย และผลกระทบต่อระบบนิเวศ</p>
+        <p class="section-lede">Design a Krathong by choosing its base, fasteners, and offerings—then compare its real-time aquatic behavior against municipal decomposition data.</p>
+      </div>
+
+      <div class="sim-layout">
+        <div class="sim-controls">
+          <div class="field-group">
+            <span class="field-label">Quick Classroom Scenarios</span>
+            <div class="preset-row">
+              <button type="button" class="preset-btn" onclick="applySimPreset('eco')">Traditional Eco</button>
+              <button type="button" class="preset-btn" onclick="applySimPreset('bread')">Well-Meant Bread</button>
+              <button type="button" class="preset-btn" onclick="applySimPreset('foam')">Legacy Styrofoam</button>
+              <button type="button" class="preset-btn" onclick="applySimPreset('ice')">Zero-Waste Ice</button>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="sim-base">Base Material (<span class="th">ฐานกระทง</span>)</label>
+            <select class="charter-select" id="sim-base" onchange="updateSimulator()">
+              <option value="banana">Banana Trunk / หยวกกล้วย (Traditional Organic)</option>
+              <option value="tapioca">Tapioca Bio-Starch / กระทงแป้งมันสำปะหลัง</option>
+              <option value="bread">Baked Bread / กระทงขนมปัง</option>
+              <option value="ice">Carved Ice Block / กระทงน้ำแข็ง</option>
+              <option value="foam">Styrofoam / กระทงโฟม (Expanded Polystyrene)</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="sim-pin">Fasteners (<span class="th">วัสดุยึดกลีบใบตอง</span>)</label>
+            <select class="charter-select" id="sim-pin" onchange="updateSimulator()">
+              <option value="bamboo">Bamboo / Wooden Pins (ไม้กลัดธรรมชาติ)</option>
+              <option value="none">Water-Molded / No Pins Needed (ไม่ต้องใช้เข็มหมุด)</option>
+              <option value="metal">Metal Staples or Steel Pins (ลวดเย็บกระดาษ / เข็มหมุด)</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="sim-extra">Offerings &amp; Decorations (<span class="th">เครื่องบูชาและตกแต่ง</span>)</label>
+            <select class="charter-select" id="sim-extra" onchange="updateSimulator()">
+              <option value="minimal">Natural Flowers &amp; 1 Small Candle (ดอกไม้สด + เทียนเล็ก)</option>
+              <option value="heavy">Heavy Wax, 3 Thick Incense &amp; Ribbons (ธูปเทียนหนา + ริบบิ้น)</option>
+              <option value="plastic">Plastic Flowers, Foil &amp; Loose Coins (ดอกไม้พลาสติก + เหรียญ)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sim-stage">
+          <div class="sim-tank">
+            <svg id="sim-water-svg" viewBox="0 0 500 210" width="100%" height="auto" role="img" aria-label="Dynamic Krathong water tank simulation">
+              <rect id="sim-sky" x="0" y="0" width="500" height="105" fill="var(--surface-container)" />
+              <circle cx="445" cy="38" r="20" fill="var(--surface-container-low)" stroke="var(--outline)" stroke-width="1.5" />
+              <rect id="sim-water" x="0" y="105" width="500" height="105" fill="var(--water-clean)" />
+              <line x1="0" y1="105" x2="500" y2="105" stroke="var(--water-rim)" stroke-width="2" />
+              <!-- Riverbed debris layer -->
+              <g id="sim-debris"></g>
+              <!-- Floating Krathong group -->
+              <g id="sim-vessel" transform="translate(250, 102)">
+                <!-- Dynamic shape updated in JS -->
+              </g>
+            </svg>
+          </div>
+
+          <div class="sim-metrics">
+            <div class="sim-metric-box">
+              <div class="figure-label">Eco-Stewardship Score</div>
+              <div class="figure-value" id="sim-score">94 / 100</div>
+            </div>
+            <div class="sim-metric-box">
+              <div class="figure-label">Decomposition Timeline</div>
+              <div class="figure-value" id="sim-decay">14–30 Days</div>
+            </div>
+            <div class="sim-metric-box">
+              <div class="figure-label">Buoyancy Stability</div>
+              <div class="figure-value" id="sim-buoyancy">18–24 Hours</div>
+            </div>
+            <div class="sim-metric-box">
+              <div class="figure-label">Aquatic Impact Level</div>
+              <div class="figure-value" id="sim-risk">Low Risk</div>
+            </div>
+          </div>
+
+          <div class="sim-verdict status-good" id="sim-verdict" aria-live="polite">
+            <strong>Ecological Verdict:</strong> Traditional banana trunk with bamboo pins decomposes naturally via microbes without releasing microplastics or metallic hazards.
+          </div>
+        </div>
+      </div>
+
+      <!-- Decomposition & Eco-Score Data Visualization -->
+      <div class="chart-panel">
+        <div class="section-kicker">Empirical Material Comparison</div>
+        <h3 class="card-title">Eco-Stewardship Index vs. Estimated Waterway Persistence</h3>
+        <div class="chart-box">
+          <canvas id="materialChart"></canvas>
+        </div>
+        <p class="source-note">
+          Methodology Note: Eco-Stewardship scores (0–100) integrate biodegradability, dissolved oxygen demand (BOD impact in stagnant urban ponds), and sanitation safety. While Bangkok Metropolitan Administration (BMA) data shows natural-material krathongs now exceed 95% of collected floats, sheer volume in closed urban ponds still challenges oxygen levels—making bread risky in high density and styrofoam catastrophic (450+ years persistence).
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION VI: BILINGUAL VOCABULARY & CONCEPT FLASHCARDS -->
+    <section class="study-section" id="sec-flashcards">
+      <div class="section-head">
+        <div class="section-kicker">Section VI · Bilingual Academic Lexicon</div>
+        <h2>Core Terminology &amp; Cultural Concept Flashcards</h2>
+        <p class="section-thai th">๖. บัตรคำศัพท์และแนวคิดหลักสองภาษา (ไทย–อังกฤษ)</p>
+        <p class="section-lede">Click any card to flip between Thai script with phonetic Romanization and its bilingual Grade 8 definition. Mark cards as mastered to save your progress.</p>
+      </div>
+
+      <div class="flashcard-toolbar">
+        <div class="tab-bar" role="group" aria-label="Filter vocabulary cards">
+          <button type="button" class="btn-secondary active" id="fc-filter-all" onclick="filterFlashcards('all')">All Terms (12)</button>
+          <button type="button" class="btn-secondary" id="fc-filter-ritual" onclick="filterFlashcards('ritual')">Ritual &amp; Origins</button>
+          <button type="button" class="btn-secondary" id="fc-filter-craft" onclick="filterFlashcards('craft')">Craft &amp; Regional</button>
+          <button type="button" class="btn-secondary" id="fc-filter-ecology" onclick="filterFlashcards('ecology')">Ecology</button>
+        </div>
+        <div class="progress-summary" id="fc-counter">Mastered: 0 of 12</div>
+      </div>
+
+      <div class="flashcard-grid" id="flashcard-grid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION VII: ENVIRONMENTAL STEWARDSHIP WORKSHOP -->
+    <section class="study-section" id="sec-stewardship">
+      <div class="section-head">
+        <div class="section-kicker">Section VII · Civic Inquiry &amp; Classroom Debate</div>
+        <h2>Balancing Ancient Tradition with Urban Waterway Management</h2>
+        <p class="section-thai th">๗. การอนุรักษ์สิ่งแวดล้อมกับประเพณีโบราณ: ประเด็นอภิปรายและบันทึกการเรียนรู้</p>
+        <p class="section-lede">Even biodegradable krathongs create waste when hundreds of thousands enter slow-moving urban canals in a single night. Explore the policy dilemma and record your argument.</p>
+      </div>
+
+      <div class="workshop-grid">
+        <article class="schedule-panel">
+          <div class="section-kicker">Three Classroom Debate Prompts</div>
+          <ul class="schedule-list">
+            <li>
+              <span class="tag-stamp">Prompt A · Quantity vs. Material</span>
+              <div>
+                <strong>"1 Family, 1 Krathong" (<span class="th">๑ ครอบครัว ๑ กระทง</span>):</strong> If switching from styrofoam to banana trunks solves plastic pollution, why do urban municipalities still urge families to share one krathong? Explain using dissolved oxygen and waste-collection labor.
+              </div>
+            </li>
+            <li>
+              <span class="tag-stamp">Prompt B · The Bread Krathong Paradox</span>
+              <div>
+                <strong>Well-Intentioned Pollution:</strong> Why can floating thousands of bread krathongs in an enclosed temple pond cause more immediate fish deaths than banana trunks? Compare rapid starch fermentation against slower fiber decay.
+              </div>
+            </li>
+            <li>
+              <span class="tag-stamp">Prompt C · Digital &amp; Closed-Pond Futures</span>
+              <div>
+                <strong>Reimagining Phra Mae Khongkha:</strong> Does floating a digital projection krathong—or floating inside a netted municipal pond designed for same-night retrieval—preserve or weaken the spiritual meaning of <em>Kho Khama</em>?
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <div class="prompt-card">
+          <div class="field-group">
+            <span class="field-label">Select Your Stewardship Policy Stance</span>
+            <div class="stance-row" role="group" aria-label="Policy stance selection">
+              <button type="button" class="btn-secondary" id="stance-eco" onclick="setWorkshopStance('eco')">Strict Natural Materials + 1 per Family</button>
+              <button type="button" class="btn-secondary" id="stance-closed" onclick="setWorkshopStance('closed')">Closed Retention Ponds Only</button>
+              <button type="button" class="btn-secondary" id="stance-digital" onclick="setWorkshopStance('digital')">Hybrid Physical &amp; Digital Projections</button>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="workshop-notes">Student Bilingual Reflection / Debate Argument (<span class="th">บันทึกความคิดเห็นและข้อเสนอแนะ</span>)</label>
+            <textarea class="charter-textarea" id="workshop-notes" rows="5" placeholder="Write 2–4 sentences defending how your community can honor Phra Mae Khongkha while protecting local water quality..." oninput="handleNotesInput()"></textarea>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); align-items: center; justify-content: space-between;">
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+              <button type="button" class="btn-primary" onclick="saveWorkshopReflection()">Save Reflection</button>
+              <button type="button" class="btn-secondary" onclick="exportStudySummary()">Export Study Report (.txt)</button>
+            </div>
+            <span class="status-msg" id="workshop-status" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION VIII: SELF-GRADING COMPREHENSION QUIZ -->
+    <section class="study-section" id="sec-quiz">
+      <div class="section-head">
+        <div class="section-kicker">Section VIII · Formative Assessment</div>
+        <h2>Self-Grading Grade 8 Comprehension Quiz</h2>
+        <p class="section-thai th">๘. แบบทดสอบวัดความเข้าใจประจำบทเรียน (ตรวจคำตอบอัตโนมัติพร้อมคำอธิบาย)</p>
+        <p class="section-lede">Test your mastery across history, symbolism, craft anatomy, Southeast Asian neighbors, and aquatic ecology. Select an answer on any question for immediate reasoning.</p>
+      </div>
+
+      <div class="quiz-header-bar">
+        <div>
+          <span class="figure-label">Current Assessment Score</span>
+          <div class="figure-value" id="quiz-score-display">0 / 8 Answered · 0 Correct</div>
+        </div>
+        <button type="button" class="btn-secondary" id="quiz-reset-btn" onclick="resetQuiz(this)">Reset Quiz Answers</button>
+      </div>
+
+      <div class="quiz-list" id="quiz-list">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="study-footer">
+    <div class="study-footer-inner">
+      <div>
+        <strong>Curriculum Grounding &amp; Sources:</strong> Synthesized for Grade 8 Thai Bilingual Social Studies from Thai royal chronicles (<em>Phra Ratchaphithi Sip Song Duean</em> by King Mongkut / Rama IV; <em>Tamrab Tao Si Chulalak</em>), Fine Arts Department historiography, Southeast Asian comparative festival studies (Myanmar Tazaungdaing, Cambodia Bon Om Touk, Laos Awk Phansa / Lai Heua Fai), and Bangkok Metropolitan Administration (BMA) waterway waste-management reports.
+      </div>
+      <div>
+        All student progress saves automatically within this study session.
+      </div>
+    </div>
+  </footer>
+
+  <api-shim></api-shim>
+  <script>
+    /* =========================================================================
+       DATA DEFINITIONS (Backtick literals throughout for safe apostrophes)
+    ========================================================================= */
+    const ANATOMY_DATA = {
+      base: {
+        tag: `Structural Buoyancy · 100% Organic`,
+        title: `1. Banana Trunk Base (<span class="th">หยวกกล้วย</span>)`,
+        desc: `Cut into a 5–7 cm disc from the fibrous core of a harvested banana pseudostem, the trunk contains natural air chambers that keep the vessel buoyant without synthetic foam.`,
+        symbol: `Demonstrates circular Thai folk craft: after harvesting bananas, the trunk is upcycled as a biodegradable float that decomposes within 14–30 days.`
+      },
+      leaves: {
+        tag: `Botanical Origami · Precision Craft`,
+        title: `2. Folded Banana Leaf Petals (<span class="th">ใบตองพับกลีบ</span>)`,
+        desc: `Fresh banana leaves are trimmed into strips and folded into classic patterns such as Kleep Phaka or lotus petals, then pinned around the rim with slender bamboo slivers (Mai Klad).`,
+        symbol: `Forms the lotus blossom silhouette (Dok Bua)—a sacred Buddhist symbol of purity rising unstained above muddy water.`
+      },
+      candle: {
+        tag: `Illumination · Prathip Offering`,
+        title: `3. Central Candle (<span class="th">เทียน</span>)`,
+        desc: `Placed upright in the center of the banana trunk base, traditionally molded from beeswax to burn steadily in the evening river breeze.`,
+        symbol: `Represents spiritual light (Prathip) dispelling ignorance and guiding wisdom, while honoring the Buddha's sacred footprint.`
+      },
+      incense: {
+        tag: `Triple Gem Reverence · 3 Sticks`,
+        title: `4. Three Joss Sticks / Incense (<span class="th">ธูป ๓ ดอก</span>)`,
+        desc: `Three aromatic joss sticks are lit alongside the candle. Choosing shorter, low-smoke incense helps reduce fine particulate haze during mass urban gatherings.`,
+        symbol: `The three sticks signify reverence for the Triple Gem (Phra Rattana Trai): the Buddha, the Dhamma (teachings), and the Sangha (monastic community).`
+      },
+      flowers: {
+        tag: `Color &amp; Fragrance · Biodegradable`,
+        title: `5. Symbolic Flowers (<span class="th">ดอกไม้บูชา เช่น ดาวเรือง บานไม่รู้โรย</span>)`,
+        desc: `Fresh blossoms—most commonly golden marigolds (Dao Rueang), globe amaranth (Ban Mai Ru Roi), orchids, and jasmine—crown the inner ring.`,
+        symbol: `Marigolds symbolize brilliance and prosperity; globe amaranth ("never wilting") expresses enduring family harmony and gratitude.`
+      },
+      coins: {
+        tag: `Generosity &amp; Merit · Dana`,
+        title: `6. Coins (<span class="th">เหรียญกษาปณ์</span>)`,
+        desc: `One or more small coins are tucked gently among the flowers prior to launching. Modern eco-guides recommend modest, unsealed coins rather than wrapped plastic packets.`,
+        symbol: `Symbolizes Dana (generosity and merit-making). Traditionally, neighborhood swimmers or river scavengers retrieved coins to reuse in circulation.`
+      }
+    };
+
+    const REGIONAL_DATA = [
+      {
+        group: `thai`,
+        region: `Northern Thailand (Chiang Mai)`,
+        festival: `Yi Peng (<span class="th">ประเพณียี่เป็ง</span>)`,
+        medium: `Khom Loi (bamboo-paper sky lanterns) &amp; Khom Nam river floats`,
+        note: `Celebrates the 2nd Lanna lunar month (12th central Thai month); thousands of hot-air paper lanterns illuminate the sky, though aviation and wildfire zoning now strictly regulate launch sites.`
+      },
+      {
+        group: `thai`,
+        region: `Lower North (Sukhothai)`,
+        festival: `Phao Thian Len Fai (<span class="th">เผาเทียน เล่นไฟ</span>)`,
+        medium: `Krathong Lek, lotus lanterns &amp; traditional clay oil lamps (Phang Prathip)`,
+        note: `Hosted across Sukhothai Historical Park ruins; blends Stone Inscription No. 1 candle traditions with classical fireworks (Talai, Phlu) and historical pageantry.`
+      },
+      {
+        group: `thai`,
+        region: `Upper West (Tak)`,
+        festival: `Krathong Sai (<span class="th">กระทงสายไหลประทีปพันดวง</span>)`,
+        medium: `Dried coconut shells (Kala Maphrao) filled with candle wax`,
+        note: `Zero banana-trunk waste: empty coconut shells lined with wax threads are released in synchronized rows, forming glowing unbroken ribbons down the Ping River.`
+      },
+      {
+        group: `thai`,
+        region: `Central Thailand (Bangkok)`,
+        festival: `Chao Phraya River Loy Krathong (<span class="th">ลอยกระทงเจ้าพระยา</span>)`,
+        medium: `Banana-leaf vessels, bio-starch floats &amp; illuminated digital projections`,
+        note: `Focuses heavily on municipal sanitation; BMA retrieval boats gather floats overnight, achieving over 95% natural material adoption while promoting "1 Family, 1 Krathong."`
+      },
+      {
+        group: `asean`,
+        region: `Myanmar`,
+        festival: `Tazaungdaing Festival (<span class="th">เทศกาลตะซองไดง์</span>)`,
+        medium: `Hot-air paper balloons (Mee Pone Pyan) &amp; oil-lamp floats`,
+        note: `Observed on the full moon of Tazaungmon; communities compete in all-night robe weaving (Matho Thingan) and launch candlelit balloons symbolizing offerings to the Sulamani Pagoda.`
+      },
+      {
+        group: `asean`,
+        region: `Cambodia`,
+        festival: `Bon Om Touk (<span class="th">บุญอมตุ๊ก</span>)`,
+        medium: `Long racing boats &amp; illuminated royal barges (Loy Pratip)`,
+        note: `Water Festival marking the unique natural reversal of the Tonle Sap River flow; combines dragon boat races with floating illuminated vessels and moon salutation (Sampeah Preah Khae).`
+      },
+      {
+        group: `asean`,
+        region: `Laos`,
+        festival: `Lai Heua Fai (<span class="th">ไหลเรือไฟ</span>)`,
+        medium: `Large bamboo-framed "fire boats" (Heua Fai) &amp; small banana-leaf Khatong`,
+        note: `Marks Awk Phansa (End of Buddhist Lent) along the Mekong River; communities build elaborate temple-shaped candlelit bamboo boats to honor Naga water spirits and wash away misfortune.`
+      }
+    ];
+
+    const SIM_BASES = {
+      banana: {
+        name: `Banana Trunk`,
+        score: 92,
+        decayDays: 21,
+        decayLabel: `14–30 Days`,
+        buoyancy: `18–24 Hours`,
+        bodPenalty: 0,
+        plastic: false,
+        color: `var(--stalk-tan)`,
+        summary: `Natural plant fiber floats reliably overnight and decomposes smoothly via aquatic microbes without microplastics.`
+      },
+      tapioca: {
+        name: `Tapioca Bio-Starch`,
+        score: 80,
+        decayDays: 2,
+        decayLabel: `1–3 Days`,
+        buoyancy: `2–4 Hours`,
+        bodPenalty: 8,
+        plastic: false,
+        color: `var(--surface-container-high)`,
+        summary: `Dissolves rapidly and can feed fish in flowing rivers, though high concentrations in stagnant ponds still add organic load.`
+      },
+      bread: {
+        name: `Baked Bread`,
+        score: 58,
+        decayDays: 2,
+        decayLabel: `1–3 Days`,
+        buoyancy: `1–2 Hours`,
+        bodPenalty: 25,
+        plastic: false,
+        color: `var(--bread-warm)`,
+        summary: `Commonly mistaken as "fish food," excess bread in still ponds rapidly ferments, triggers algal blooms, and strips dissolved oxygen—causing fish kills.`
+      },
+      ice: {
+        name: `Carved Ice`,
+        score: 98,
+        decayDays: 0.04,
+        decayLabel: `< 1 Hour`,
+        buoyancy: `25–50 Mins`,
+        bodPenalty: 0,
+        plastic: false,
+        color: `var(--ice-tint)`,
+        summary: `Melts completely into pure water with zero solid waste or oxygen demand; only the small candle wick remains to retrieve.`
+      },
+      foam: {
+        name: `Styrofoam`,
+        score: 12,
+        decayDays: 164250,
+        decayLabel: `450+ Years`,
+        buoyancy: `Indefinite`,
+        bodPenalty: 35,
+        plastic: true,
+        color: `var(--foam-white)`,
+        summary: `Non-biodegradable expanded polystyrene fragments into toxic microplastics eaten by fish and clogs drainage pumps for centuries.`
+      }
+    };
+
+    const SIM_PINS = {
+      bamboo: { label: `Bamboo Pins`, penalty: 0, hazard: false, note: `Safe wooden pins break down alongside organic leaves.` },
+      none: { label: `No Pins Needed`, penalty: 0, hazard: false, note: `Zero sharp fasteners; safest option for sanitation crews.` },
+      metal: { label: `Metal Staples / Pins`, penalty: 28, hazard: true, note: `Rusting staples and steel pins injure cleanup workers' hands and lodge inside aquatic animals.` }
+    };
+
+    const SIM_EXTRAS = {
+      minimal: { label: `Minimal Natural`, penalty: 0, note: `Fresh flowers and a single small candle keep wax and smoke minimal.` },
+      heavy: { label: `Heavy Wax &amp; Ribbons`, penalty: 12, note: `Synthetic ribbons resist decay and excess paraffin coats water surfaces.` },
+      plastic: { label: `Plastic Flowers &amp; Foil`, penalty: 24, note: `Artificial petals and foil wrappers never biodegrade and add persistent litter.` }
+    };
+
+    const FLASHCARDS = [
+      { id: `fc1`, cat: `ritual`, thai: `ลอย`, phonetic: `Loi`, en: `To Float`, def: `Verb meaning "to float" on water or drift in air; signifies releasing burdens onto the current.` },
+      { id: `fc2`, cat: `craft`, thai: `กระทง`, phonetic: `Kra-thong`, en: `Lotus-Shaped Floating Vessel`, def: `A small handmade raft or basket traditionally woven from banana trunk and folded banana leaves.` },
+      { id: `fc3`, cat: `ritual`, thai: `พระแม่คงคา`, phonetic: `Phra Mae Khong-kha`, en: `Goddess / Mother of Waters`, def: `Sacred personification of rivers and canals (derived from Sanskrit Ganga) honored on Loy Krathong.` },
+      { id: `fc4`, cat: `ritual`, thai: `ขอขมา`, phonetic: `Kho Kha-ma`, en: `To Ask Forgiveness`, def: `Formal spiritual apology for polluting, wasting, or disrespecting natural water resources.` },
+      { id: `fc5`, cat: `ritual`, thai: `นางนพมาศ`, phonetic: `Nang Nop-pha-mat`, en: `Lady Nopphamat`, def: `Legendary Sukhothai consort featured in Tamrab Tao Si Chulalak (composed in the early Rattanakosin era).` },
+      { id: `fc6`, cat: `ritual`, thai: `ประทีป`, phonetic: `Pra-thip`, en: `Sacred Lamp / Candlelight`, def: `Ceremonial light offered in Buddhist worship (Loi Phra Prathip) symbolizing wisdom dispelling darkness.` },
+      { id: `fc7`, cat: `craft`, thai: `หยวกกล้วย`, phonetic: `Yuak Kluai`, en: `Banana Trunk Core`, def: `Spongy inner pseudostem of a banana plant used as a buoyant, 100% biodegradable krathong base.` },
+      { id: `fc8`, cat: `craft`, thai: `ธูป ๓ ดอก`, phonetic: `Thup Sam Dok`, en: `Three Incense Sticks`, def: `Three joss sticks honoring the Buddhist Triple Gem: Buddha, Dhamma, and Sangha.` },
+      { id: `fc9`, cat: `craft`, thai: `ยี่เป็ง`, phonetic: `Yi Peng`, en: `Northern Sky Lantern Festival`, def: `Lanna celebration in Chiang Mai pairing river floats with hot-air sky lanterns (Khom Loi).` },
+      { id: `fc10`, cat: `craft`, thai: `กระทงสาย`, phonetic: `Kra-thong Sai`, en: `Chain of Coconut-Shell Floats`, def: `Tak Province tradition using wax-filled dried coconut shells that drift in a glowing river line.` },
+      { id: `fc11`, cat: `ecology`, thai: `ภาวะน้ำเน่าเสีย (ยูโทรฟิเคชัน)`, phonetic: `Yu-thro-fi-khe-chan`, en: `Eutrophication / Oxygen Depletion`, def: `Rapid dissolved-oxygen drop caused when too much organic matter (like bread) decays in still water.` },
+      { id: `fc12`, cat: `ecology`, thai: `๑ ครอบครัว ๑ กระทง`, phonetic: `Nueng Khrop-khrua Nueng Kra-thong`, en: `One Family, One Krathong`, def: `Urban civic policy reducing total floating waste volume by sharing a single vessel per household.` }
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        id: `q1`,
+        prompt: `01. According to King Mongkut (Rama IV) in Phra Ratchaphithi Sip Song Duean, how did Loy Krathong's spiritual purpose evolve over time?`,
+        options: [
+          `It began as a European maritime tradition introduced in the 19th century.`,
+          `It originated in Brahmanical lantern rites (Chong Priang) and was adapted into a Buddhist offering to the Buddha's footprint.`,
+          `It was strictly prohibited during the Ayutthaya and Rattanakosin periods.`,
+          `It started as a competitive dragon-boat race imported from southern China.`
+        ],
+        answer: 1,
+        explanation: `King Rama IV documented that Loy Krathong grew out of Brahmanical Chong Priang lantern customs and was purposefully redirected into Buddhist Phuttha Bucha honoring the Buddha's footprint.`
+      },
+      {
+        id: `q2`,
+        prompt: `02. Why do modern Thai historians conclude that Tamrab Tao Si Chulalak (the Nang Nopphamat text) was written or heavily revised in the Rattanakosin era rather than Sukhothai?`,
+        options: [
+          `The original stone tablet was written in modern English.`,
+          `It mentions Westerners (Farang), firearms, and crops not present in 14th-century Sukhothai.`,
+          `Sukhothai had no rivers or waterways for floating lamps.`,
+          `Banana trees did not grow in Southeast Asia until 1850.`
+        ],
+        answer: 1,
+        explanation: `Anachronisms in the text—such as references to Europeans, cannons, and post-Columbian crops—indicate authorship during the reign of King Rama III (1824–1851), even though the legend is set in Sukhothai.`
+      },
+      {
+        id: `q3`,
+        prompt: `03. What are the TWO primary spiritual meanings of whispering a prayer before floating a krathong?`,
+        options: [
+          `Asking Phra Mae Khongkha for forgiveness for water misuse and symbolically letting go of misfortune.`,
+          `Predicting monsoon rainfall totals and calculating rice tax rates.`,
+          `Honoring ancestral ocean navigators and sealing marriage contracts.`,
+          `Summoning winter snow and testing river current velocity.`
+        ],
+        answer: 0,
+        explanation: `Devotees express gratitude and Kho Khama (apology) to Phra Mae Khongkha for using and polluting water, while floating away negative karma, grief, and misfortune.`
+      },
+      {
+        id: `q4`,
+        prompt: `04. In a traditional krathong, what do the three joss sticks (ธูป ๓ ดอก) represent?`,
+        options: [
+          `The three months of the dry season`,
+          `The Triple Gem: Buddha, Dhamma, and Sangha`,
+          `The three rivers converging in Chiang Mai`,
+          `The three kingdoms of Sukhothai, Ayutthaya, and Lanna`
+        ],
+        answer: 1,
+        explanation: `Three incense sticks represent the Triple Gem (Phra Rattana Trai) in Theravada Buddhism, paired with the candle (Prathip) symbolizing wisdom.`
+      },
+      {
+        id: `q5`,
+        prompt: `05. Which Thai provincial tradition uses dried coconut shells (Kala Maphrao) filled with wax instead of banana trunks?`,
+        options: [
+          `Chiang Mai's Yi Peng sky lantern festival`,
+          `Tak Province's Krathong Sai`,
+          `Bangkok's Chao Phraya royal barge parade`,
+          `Sukhothai's Phao Thian Len Fai clay lamps`
+        ],
+        answer: 1,
+        explanation: `Tak's Krathong Sai releases wax-filled coconut shells in long glowing chains down the Ping River, producing zero banana-trunk waste.`
+      },
+      {
+        id: `q6`,
+        prompt: `06. How does Cambodia's Bon Om Touk compare with Laos' Lai Heua Fai?`,
+        options: [
+          `Bon Om Touk marks the reversal of the Tonle Sap River with boat races and Loy Pratip, whereas Lai Heua Fai launches illuminated bamboo fire boats on the Mekong.`,
+          `Both countries ban all boats and only release hot-air balloons in April.`,
+          `Bon Om Touk is held in mountainous deserts, while Lai Heua Fai is an indoor temple play.`,
+          `Neither country uses water or candlelight during its autumn full-moon festival.`
+        ],
+        answer: 0,
+        explanation: `Cambodia's Bon Om Touk celebrates the Tonle Sap flow reversal alongside illuminated barges, while Laos' Lai Heua Fai launches temple-shaped bamboo "fire boats" onto the Mekong.`
+      },
+      {
+        id: `q7`,
+        prompt: `07. Scenario: A school releases 4,000 bread krathongs into a small, stagnant campus pond in one evening. Why is this ecologically dangerous?`,
+        options: [
+          `Bread floats for 450 years and blocks sunlight like styrofoam.`,
+          `Rapid bread decay fuels microbial blooms that consume dissolved oxygen (eutrophication), suffocating fish.`,
+          `Bread turns pond water into solid ice overnight.`,
+          `Fish cannot digest wheat and immediately migrate upstream.`
+        ],
+        answer: 1,
+        explanation: `In still, enclosed ponds, excessive bread decomposes rapidly, spiking biochemical oxygen demand (BOD) and stripping dissolved oxygen needed by fish.`
+      },
+      {
+        id: `q8`,
+        prompt: `08. Which combination of design and civic policy best protects sanitation workers AND urban river ecology during Loy Krathong?`,
+        options: [
+          `Styrofoam bases fastened with metal staples, floated individually by every person`,
+          `Sharing 1 banana-trunk or ice krathong per family, fastened with wooden pins or no pins, in monitored collection zones`,
+          `Wrapping bread krathongs in plastic bags with extra coins`,
+          `Throwing loose metal pins and paraffin wax directly from bridges`
+        ],
+        answer: 1,
+        explanation: `Combining organic or melting bases, pin-free or wooden fasteners, and the "1 Family, 1 Krathong" norm reduces waste volume, removes sharp metal hazards, and preserves the sacred ritual.`
+      }
+    ];
+
+    /* =========================================================================
+       STATE MANAGEMENT (Persisted via notebookAppApi)
+    ========================================================================= */
+    let appState = {
+      historyTab: `legend`,
+      anatomyPart: `base`,
+      regionalFilter: `all`,
+      simBase: `banana`,
+      simPin: `bamboo`,
+      simExtra: `minimal`,
+      fcFilter: `all`,
+      flippedCards: {},
+      masteredCards: {},
+      workshopStance: `eco`,
+      workshopNotes: ``,
+      quizAnswers: {}
+    };
+
+    let materialChartInstance = null;
+
+    async function persistState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState(appState);
+        }
+      } catch (err) {
+        // Silent fallback when running outside host preview
+      }
+    }
+
+    /* =========================================================================
+       SECTION I: HISTORY TABS
+    ========================================================================= */
+    function switchHistoryTab(tabKey) {
+      appState.historyTab = tabKey;
+      const keys = [`legend`, `consensus`, `royal`];
+      keys.forEach(function(k) {
+        const btn = document.getElementById(`hist-tab-` + k);
+        const panel = document.getElementById(`hist-panel-` + k);
+        const active = k === tabKey;
+        if (btn) {
+          btn.classList.toggle(`active`, active);
+          btn.setAttribute(`aria-selected`, active ? `true` : `false`);
+        }
+        if (panel) {
+          if (active) {
+            panel.removeAttribute(`hidden`);
+          } else {
+            panel.setAttribute(`hidden`, `hidden`);
+          }
+        }
+      });
+      persistState();
+    }
+
+    /* =========================================================================
+       SECTION III: ANATOMY INTERACTION
+    ========================================================================= */
+    function selectAnatomy(partKey) {
+      if (!ANATOMY_DATA[partKey]) return;
+      appState.anatomyPart = partKey;
+
+      const allKeys = Object.keys(ANATOMY_DATA);
+      allKeys.forEach(function(k) {
+        const btn = document.getElementById(`btn-part-` + k);
+        const svgEl = document.getElementById(`svg-part-` + k);
+        const isSelected = k === partKey;
+        if (btn) btn.classList.toggle(`active`, isSelected);
+        if (svgEl) {
+          svgEl.style.opacity = isSelected ? `1` : `0.48`;
+        }
+      });
+
+      const data = ANATOMY_DATA[partKey];
+      const tagEl = document.getElementById(`anat-tag`);
+      const titleEl = document.getElementById(`anat-title`);
+      const descEl = document.getElementById(`anat-desc`);
+      const symEl = document.getElementById(`anat-symbol`);
+
+      if (tagEl) tagEl.textContent = data.tag;
+      if (titleEl) titleEl.innerHTML = data.title;
+      if (descEl) descEl.textContent = data.desc;
+      if (symEl) symEl.textContent = data.symbol;
+
+      persistState();
+    }
+
+    /* =========================================================================
+       SECTION IV: REGIONAL TABLE FILTERING
+    ========================================================================= */
+    function filterRegional(groupKey) {
+      appState.regionalFilter = groupKey;
+      const btnIds = { all: `reg-filter-all`, thai: `reg-filter-thai`, asean: `reg-filter-asean` };
+      Object.keys(btnIds).forEach(function(k) {
+        const b = document.getElementById(btnIds[k]);
+        if (b) b.classList.toggle(`active`, k === groupKey);
+      });
+
+      const tbody = document.getElementById(`regional-tbody`);
+      if (!tbody) return;
+      const rows = REGIONAL_DATA.filter(function(item) {
+        return groupKey === `all` || item.group === groupKey;
+      });
+
+      tbody.innerHTML = rows.map(function(r) {
+        return `<tr>
+          <td><strong>${r.region}</strong></td>
+          <td>${r.festival}</td>
+          <td>${r.medium}</td>
+          <td>${r.note}</td>
+        </tr>`;
+      }).join(``);
+
+      persistState();
+    }
+
+    /* =========================================================================
+       SECTION V: INTERACTIVE KRATHONG MATERIAL SIMULATOR + CHART.JS
+    ========================================================================= */
+    function applySimPreset(presetName) {
+      const baseEl = document.getElementById(`sim-base`);
+      const pinEl = document.getElementById(`sim-pin`);
+      const extraEl = document.getElementById(`sim-extra`);
+      if (!baseEl || !pinEl || !extraEl) return;
+
+      if (presetName === `eco`) {
+        baseEl.value = `banana`;
+        pinEl.value = `bamboo`;
+        extraEl.value = `minimal`;
+      } else if (presetName === `bread`) {
+        baseEl.value = `bread`;
+        pinEl.value = `none`;
+        extraEl.value = `minimal`;
+      } else if (presetName === `foam`) {
+        baseEl.value = `foam`;
+        pinEl.value = `metal`;
+        extraEl.value = `plastic`;
+      } else if (presetName === `ice`) {
+        baseEl.value = `ice`;
+        pinEl.value = `none`;
+        extraEl.value = `minimal`;
+      }
+      updateSimulator();
+    }
+
+    function updateSimulator() {
+      const baseEl = document.getElementById(`sim-base`);
+      const pinEl = document.getElementById(`sim-pin`);
+      const extraEl = document.getElementById(`sim-extra`);
+      if (!baseEl || !pinEl || !extraEl) return;
+
+      appState.simBase = baseEl.value;
+      appState.simPin = pinEl.value;
+      appState.simExtra = extraEl.value;
+
+      const base = SIM_BASES[appState.simBase] || SIM_BASES.banana;
+      const pin = SIM_PINS[appState.simPin] || SIM_PINS.bamboo;
+      const extra = SIM_EXTRAS[appState.simExtra] || SIM_EXTRAS.minimal;
+
+      const rawScore = base.score - pin.penalty - extra.penalty;
+      const finalScore = Math.max(0, Math.min(100, rawScore));
+
+      let riskLabel = `Low Risk`;
+      let statusClass = `status-good`;
+      if (finalScore < 45 || base.plastic || pin.hazard) {
+        riskLabel = finalScore < 45 ? `Critical Risk` : `Hazard Warning`;
+        statusClass = `status-bad`;
+      } else if (finalScore < 75) {
+        riskLabel = `Moderate (BOD)`;
+        statusClass = `status-warn`;
+      }
+
+      const scoreEl = document.getElementById(`sim-score`);
+      const decayEl = document.getElementById(`sim-decay`);
+      const buoyEl = document.getElementById(`sim-buoyancy`);
+      const riskEl = document.getElementById(`sim-risk`);
+      const verdictEl = document.getElementById(`sim-verdict`);
+
+      if (scoreEl) scoreEl.textContent = finalScore + ` / 100`;
+      if (decayEl) decayEl.textContent = base.decayLabel;
+      if (buoyEl) buoyEl.textContent = base.buoyancy;
+      if (riskEl) riskEl.textContent = riskLabel;
+
+      if (verdictEl) {
+        verdictEl.className = `sim-verdict ` + statusClass;
+        verdictEl.innerHTML = `<strong>Ecological Verdict (${base.name} + ${pin.label}):</strong> ${base.summary} ${pin.note} ${extra.note}`;
+      }
+
+      renderSimVisual(base, pin, extra, finalScore);
+      persistState();
+    }
+
+    function renderSimVisual(base, pin, extra, score) {
+      const waterEl = document.getElementById(`sim-water`);
+      const vesselEl = document.getElementById(`sim-vessel`);
+      const debrisEl = document.getElementById(`sim-debris`);
+      if (!waterEl || !vesselEl || !debrisEl) return;
+
+      if (score >= 75) {
+        waterEl.setAttribute(`fill`, `var(--water-clean)`);
+      } else if (score >= 45) {
+        waterEl.setAttribute(`fill`, `var(--water-murky)`);
+      } else {
+        waterEl.setAttribute(`fill`, `var(--water-polluted)`);
+      }
+
+      const leafFill = appState.simBase === `ice`
+        ? `var(--ice-tint)`
+        : appState.simBase === `bread`
+          ? `var(--bread-warm)`
+          : `var(--leaf-green)`;
+
+      const petalFill = extra.penalty >= 24 ? `var(--data-4)` : `var(--marigold)`;
+
+      vesselEl.innerHTML = `
+        <ellipse cx="0" cy="8" rx="68" ry="12" fill="${base.color}" stroke="var(--primary)" stroke-width="1.8" />
+        <rect x="-68" y="-12" width="136" height="20" fill="${base.color}" stroke="var(--primary)" stroke-width="1.8" />
+        <polygon points="-64,-12 -46,-38 -28,-12" fill="${leafFill}" stroke="var(--primary)" stroke-width="1.2" />
+        <polygon points="-28,-12 -8,-40 12,-12" fill="${leafFill}" stroke="var(--primary)" stroke-width="1.2" />
+        <polygon points="12,-12 32,-40 52,-12" fill="${leafFill}" stroke="var(--primary)" stroke-width="1.2" />
+        <circle cx="-25" cy="-16" r="7" fill="${petalFill}" stroke="var(--primary)" stroke-width="1" />
+        <circle cx="25" cy="-16" r="7" fill="${petalFill}" stroke="var(--primary)" stroke-width="1" />
+        <rect x="-5" y="-55" width="10" height="43" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="1.2" />
+        <path d="M0 -74 Q6 -64 0 -57 Q-6 -64 0 -74 Z" fill="var(--flame-amber)" />
+        <line x1="-12" y1="-12" x2="-18" y2="-62" stroke="var(--tertiary)" stroke-width="2" />
+        <line x1="12" y1="-12" x2="18" y2="-62" stroke="var(--tertiary)" stroke-width="2" />
+      `;
+
+      let debrisSvg = ``;
+      if (pin.hazard) {
+        debrisSvg += `
+          <line x1="140" y1="185" x2="156" y2="189" stroke="var(--error)" stroke-width="2.5" />
+          <line x1="280" y1="192" x2="294" y2="184" stroke="var(--error)" stroke-width="2.5" />
+          <line x1="355" y1="186" x2="369" y2="191" stroke="var(--error)" stroke-width="2.5" />
+        `;
+      }
+      if (base.plastic) {
+        debrisSvg += `
+          <circle cx="110" cy="155" r="4" fill="var(--surface-container-low)" stroke="var(--error)" stroke-width="1" />
+          <circle cx="385" cy="142" r="5" fill="var(--surface-container-low)" stroke="var(--error)" stroke-width="1" />
+          <circle cx="330" cy="170" r="3.5" fill="var(--surface-container-low)" stroke="var(--error)" stroke-width="1" />
+        `;
+      }
+      if (base.bodPenalty >= 20 && !base.plastic) {
+        debrisSvg += `
+          <ellipse cx="250" cy="145" rx="95" ry="16" fill="var(--bread-warm)" opacity="0.35" />
+        `;
+      }
+      debrisEl.innerHTML = debrisSvg;
+    }
+
+    function initMaterialChart() {
+      const canvas = document.getElementById(`materialChart`);
+      if (!canvas || typeof Chart === `undefined`) return;
+
+      const styles = getComputedStyle(document.documentElement);
+      const cPrimary = styles.getPropertyValue(`--data-1`).trim() || `#14213d`;
+      const cBrass = styles.getPropertyValue(`--data-2`).trim() || `#8a6a35`;
+      const cGreen = styles.getPropertyValue(`--data-3`).trim() || `#2d5a4a`;
+      const cRed = styles.getPropertyValue(`--data-4`).trim() || `#9b2c2c`;
+      const cGrid = styles.getPropertyValue(`--outline-variant`).trim() || `#d9cfb8`;
+      const cText = styles.getPropertyValue(`--on-surface`).trim() || `#1c1f26`;
+
+      if (materialChartInstance) {
+        materialChartInstance.destroy();
+      }
+
+      materialChartInstance = new Chart(canvas, {
+        type: `bar`,
+        data: {
+          labels: [
+            `Carved Ice (< 1 hr)`,
+            `Banana Trunk (14–30 days)`,
+            `Tapioca Starch (1–3 days)`,
+            `Baked Bread (1–3d, high BOD)`,
+            `Styrofoam (450+ years)`
+          ],
+          datasets: [
+            {
+              label: `Eco-Stewardship Score (0–100)`,
+              data: [98, 92, 80, 58, 12],
+              backgroundColor: [cGreen, cPrimary, cGreen, cBrass, cRed],
+              borderRadius: 2
+            }
+          ]
+        },
+        options: {
+          indexAxis: `y`,
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  return `Stewardship Score: ` + ctx.parsed.x + ` / 100`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 100,
+              grid: { color: cGrid },
+              ticks: {
+                color: cText,
+                font: { family: `'IBM Plex Mono', monospace`, size: 12 }
+              },
+              title: {
+                display: true,
+                text: `Eco-Stewardship Index (Higher = Safer for Waterways)`,
+                color: cText,
+                font: { family: `'Times New Roman', serif`, size: 13 }
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: {
+                color: cText,
+                font: { family: `'Times New Roman', serif`, size: 14 }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    /* =========================================================================
+       SECTION VI: BILINGUAL FLASHCARDS
+    ========================================================================= */
+    function filterFlashcards(catKey) {
+      appState.fcFilter = catKey;
+      const map = {
+        all: `fc-filter-all`,
+        ritual: `fc-filter-ritual`,
+        craft: `fc-filter-craft`,
+        ecology: `fc-filter-ecology`
+      };
+      Object.keys(map).forEach(function(k) {
+        const b = document.getElementById(map[k]);
+        if (b) b.classList.toggle(`active`, k === catKey);
+      });
+      renderFlashcards();
+      persistState();
+    }
+
+    function toggleFlashcardFlip(id) {
+      appState.flippedCards[id] = !appState.flippedCards[id];
+      renderFlashcards();
+      persistState();
+    }
+
+    function toggleFlashcardMaster(ev, id) {
+      if (ev && typeof ev.stopPropagation === `function`) ev.stopPropagation();
+      appState.masteredCards[id] = !appState.masteredCards[id];
+      renderFlashcards();
+      updateGlobalProgress();
+      persistState();
+    }
+
+    function renderFlashcards() {
+      const grid = document.getElementById(`flashcard-grid`);
+      if (!grid) return;
+
+      const list = FLASHCARDS.filter(function(card) {
+        return appState.fcFilter === `all` || card.cat === appState.fcFilter;
+      });
+
+      grid.innerHTML = list.map(function(c) {
+        const flipped = !!appState.flippedCards[c.id];
+        const mastered = !!appState.masteredCards[c.id];
+        const bodyHtml = flipped
+          ? `<div>
+               <p class="fc-english">${c.en}</p>
+               <p class="fc-def">${c.def}</p>
+             </div>`
+          : `<div>
+               <div class="fc-thai th">${c.thai}</div>
+               <div class="fc-phonetic">[ ${c.phonetic} ]</div>
+             </div>`;
+
+        return `<article class="flashcard ${flipped ? `flipped` : ``} ${mastered ? `mastered` : ``}" onclick="toggleFlashcardFlip('${c.id}')" tabindex="0" role="button" aria-label="Flashcard for ${c.en}">
+          <div class="fc-top">
+            <span class="fc-cat">${c.cat}</span>
+            <span class="fc-cat">${flipped ? `Definition` : `Click to Flip`}</span>
+          </div>
+          ${bodyHtml}
+          <div class="fc-actions">
+            <span class="fc-phonetic">${flipped ? `<span class="th">${c.thai}</span>` : `Thai Term`}</span>
+            <button type="button" class="fc-master-btn ${mastered ? `is-mastered` : ``}" onclick="toggleFlashcardMaster(event, '${c.id}')">
+              ${mastered ? `Mastered` : `Mark Mastered`}
+            </button>
+          </div>
+        </article>`;
+      }).join(``);
+
+      const masteredCount = FLASHCARDS.filter(function(c) { return !!appState.masteredCards[c.id]; }).length;
+      const fcCounter = document.getElementById(`fc-counter`);
+      if (fcCounter) fcCounter.textContent = `Mastered: ` + masteredCount + ` of ` + FLASHCARDS.length;
+    }
+
+    /* =========================================================================
+       SECTION VII: STEWARDSHIP WORKSHOP & EXPORT
+    ========================================================================= */
+    function setWorkshopStance(stance) {
+      appState.workshopStance = stance;
+      const map = { eco: `stance-eco`, closed: `stance-closed`, digital: `stance-digital` };
+      Object.keys(map).forEach(function(k) {
+        const btn = document.getElementById(map[k]);
+        if (btn) btn.classList.toggle(`active`, k === stance);
+      });
+      persistState();
+    }
+
+    function handleNotesInput() {
+      const ta = document.getElementById(`workshop-notes`);
+      const status = document.getElementById(`workshop-status`);
+      if (ta) appState.workshopNotes = ta.value;
+      if (status) status.textContent = `Unsaved draft…`;
+    }
+
+    function saveWorkshopReflection() {
+      const ta = document.getElementById(`workshop-notes`);
+      const status = document.getElementById(`workshop-status`);
+      if (!ta || !status) return;
+      appState.workshopNotes = ta.value.trim();
+      if (appState.workshopNotes.length < 10) {
+        status.textContent = `Please write at least 10 characters before saving.`;
+        return;
+      }
+      status.textContent = `Reflection saved to session.`;
+      persistState();
+    }
+
+    function exportStudySummary() {
+      const masteredCount = FLASHCARDS.filter(function(c) { return !!appState.masteredCards[c.id]; }).length;
+      const correctCount = QUIZ_QUESTIONS.filter(function(q) { return appState.quizAnswers[q.id] === q.answer; }).length;
+      const notes = appState.workshopNotes || `(No reflection entered yet)`;
+
+      const content = [
+        `LOY KRATHONG — GRADE 8 BILINGUAL STUDY SUMMARY`,
+        `==============================================`,
+        `Selected Krathong Lab Design: ${appState.simBase} + ${appState.simPin} + ${appState.simExtra}`,
+        `Vocabulary Flashcards Mastered: ${masteredCount} / ${FLASHCARDS.length}`,
+        `Comprehension Quiz Score: ${correctCount} / ${QUIZ_QUESTIONS.length}`,
+        `Stewardship Debate Stance: ${appState.workshopStance}`,
+        ``,
+        `Student Reflection:`,
+        notes
+      ].join(`\n`);
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: content,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: `loy_krathong_grade8_summary.txt`
+        });
+      }
+      const status = document.getElementById(`workshop-status`);
+      if (status) status.textContent = `Study summary exported.`;
+    }
+
+    /* =========================================================================
+       SECTION VIII: SELF-GRADING QUIZ
+    ========================================================================= */
+    function selectQuizAnswer(qId, optIdx) {
+      appState.quizAnswers[qId] = optIdx;
+      renderQuiz();
+      updateGlobalProgress();
+      persistState();
+    }
+
+    function resetQuiz(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `Click again to confirm reset`;
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.textContent = `Reset Quiz Answers`;
+      appState.quizAnswers = {};
+      renderQuiz();
+      updateGlobalProgress();
+      persistState();
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById(`quiz-list`);
+      const scoreEl = document.getElementById(`quiz-score-display`);
+      if (!container) return;
+
+      let answered = 0;
+      let correct = 0;
+
+      container.innerHTML = QUIZ_QUESTIONS.map(function(q) {
+        const chosen = appState.quizAnswers[q.id];
+        const hasAnswered = typeof chosen === `number`;
+        if (hasAnswered) {
+          answered += 1;
+          if (chosen === q.answer) correct += 1;
+        }
+
+        const optsHtml = q.options.map(function(opt, idx) {
+          let cls = `quiz-opt-btn`;
+          if (hasAnswered) {
+            if (idx === chosen && idx === q.answer) cls += ` selected-correct`;
+            else if (idx === chosen && idx !== q.answer) cls += ` selected-wrong`;
+            else if (idx === q.answer) cls += ` reveal-correct`;
+          }
+          const letter = [`A`, `B`, `C`, `D`][idx];
+          return `<button type="button" class="${cls}" onclick="selectQuizAnswer('${q.id}', ${idx})">
+            <strong>${letter}.</strong> <span>${opt}</span>
+          </button>`;
+        }).join(``);
+
+        const feedbackHtml = hasAnswered
+          ? `<div class="quiz-feedback ${chosen === q.answer ? `correct` : `wrong`}">
+               <strong>${chosen === q.answer ? `Correct:` : `Review:`}</strong> ${q.explanation}
+             </div>`
+          : ``;
+
+        return `<article class="quiz-card">
+          <p class="quiz-q-title">${q.prompt}</p>
+          <div class="quiz-options">${optsHtml}</div>
+          ${feedbackHtml}
+        </article>`;
+      }).join(``);
+
+      if (scoreEl) {
+        scoreEl.textContent = answered + ` / ` + QUIZ_QUESTIONS.length + ` Answered · ` + correct + ` Correct`;
+      }
+    }
+
+    function updateGlobalProgress() {
+      const fcEl = document.getElementById(`prog-flashcards`);
+      const qEl = document.getElementById(`prog-quiz`);
+      const masteredCount = FLASHCARDS.filter(function(c) { return !!appState.masteredCards[c.id]; }).length;
+      const correctCount = QUIZ_QUESTIONS.filter(function(q) { return appState.quizAnswers[q.id] === q.answer; }).length;
+      if (fcEl) fcEl.textContent = `Flashcards: ` + masteredCount + `/` + FLASHCARDS.length;
+      if (qEl) qEl.textContent = `Quiz: ` + correctCount + `/` + QUIZ_QUESTIONS.length;
+    }
+
+    /* =========================================================================
+       INITIALIZATION & STATE RESTORE
+    ========================================================================= */
+    function applyRestoredState(saved) {
+      if (!saved || typeof saved !== `object`) return;
+      if (saved.historyTab) appState.historyTab = saved.historyTab;
+      if (saved.anatomyPart) appState.anatomyPart = saved.anatomyPart;
+      if (saved.regionalFilter) appState.regionalFilter = saved.regionalFilter;
+      if (saved.simBase) appState.simBase = saved.simBase;
+      if (saved.simPin) appState.simPin = saved.simPin;
+      if (saved.simExtra) appState.simExtra = saved.simExtra;
+      if (saved.fcFilter) appState.fcFilter = saved.fcFilter;
+      if (saved.flippedCards) appState.flippedCards = saved.flippedCards;
+      if (saved.masteredCards) appState.masteredCards = saved.masteredCards;
+      if (saved.workshopStance) appState.workshopStance = saved.workshopStance;
+      if (typeof saved.workshopNotes === `string`) appState.workshopNotes = saved.workshopNotes;
+      if (saved.quizAnswers) appState.quizAnswers = saved.quizAnswers;
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          applyRestoredState(saved);
+        }
+      } catch (err) {
+        // Proceed with default state
+      }
+
+      const simBaseEl = document.getElementById(`sim-base`);
+      const simPinEl = document.getElementById(`sim-pin`);
+      const simExtraEl = document.getElementById(`sim-extra`);
+      const notesEl = document.getElementById(`workshop-notes`);
+
+      if (simBaseEl) simBaseEl.value = appState.simBase;
+      if (simPinEl) simPinEl.value = appState.simPin;
+      if (simExtraEl) simExtraEl.value = appState.simExtra;
+      if (notesEl) notesEl.value = appState.workshopNotes;
+
+      switchHistoryTab(appState.historyTab);
+      selectAnatomy(appState.anatomyPart);
+      filterRegional(appState.regionalFilter);
+      updateSimulator();
+      initMaterialChart();
+      filterFlashcards(appState.fcFilter);
+      setWorkshopStance(appState.workshopStance);
+      renderQuiz();
+      updateGlobalProgress();
+
+      if (typeof lucide !== `undefined` && typeof lucide.createIcons === `function`) {
+        lucide.createIcons();
+      }
+
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+          window.notebookAppApi.notifyAppReady();
+        }
+      } catch (err) {
+        // Ignore outside host
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
